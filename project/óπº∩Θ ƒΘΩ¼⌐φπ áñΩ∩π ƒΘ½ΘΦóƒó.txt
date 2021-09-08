@@ -1,0 +1,170 @@
+create database hotel;
+CREATE TABLE Employees 
+  (
+  Id INT (10) NOT NULL,
+  FirstName VARCHAR(200) NOT NULL, 
+  LastName VARCHAR(200) NOT NULL, 
+  Jop_Titel VARCHAR(100),
+  Phone_num INT(10),
+  date_birth DATE,
+  gender ENUM('M','F'),
+  salary INT(10),
+  PRIMARY KEY (Id)
+  );
+INSERT INTO Employees values(1100678432,"Noor","abdullah","General Manuger",0530405099,'1898-01-21','F',13800);
+INSERT INTO Employees values(1015680002,"Sara","Saad","Public Relations Manuger",0566865900,'1990-06-11','F',9900);
+INSERT INTO Employees values(1189054678,"Rakan","Ali","security",0583586082,'1994-05-22','M',3500);
+INSERT INTO Employees values(1009803450,"Adam","Ibrahim","Room Devision",0573892934,'1899-12-30','M',3200);
+INSERT INTO Employees values(1105678097,"Arwa","Ashrsf","Sales&Marketing",0573826579,'1991-03-10','F',6700);
+INSERT INTO Employees values(1234578907,"Amal","Jaser","Chif",0563785090,'1880-10-10','F',7055);
+INSERT INTO Employees values(1987239789,"Yara","Hatem","Receptionist",0578903210,'1898-02-15','F',4300);
+INSERT INTO Employees values(1199008822,"Yaseen","Mohammed","Housekeeper",0567867543,'1995-08-06','M',3900);
+INSERT INTO Employees values(1065325570,"Firas","Dawood","Porter",0554322890,'1997-04-21','M',2200);
+INSERT INTO Employees values(1000679080,"Amjad","Naseer ","Barista",0567890000,'1998-07-21','F',2900);
+INSERT INTO Employees values(1110356741,"Monir","Ashrf","Room service",0566736652,'1996-11-09','M',1200);
+INSERT INTO Employees values(1110356729,"Moslim","Marshad","Room service",0561136652,'1998-12-22','M',1500);
+INSERT INTO Employees values(1110356549,"Zakaria","Ali","Room service",0566736222,'1991-01-16','M',1150);
+INSERT INTO Employees values(1110350749,"Ahmed","Alga","Room service",0566736112,'1997-11-09','M',1200);
+select*from Employees;
+
+create table service(
+ser_id int(10) not null,
+ser_type varchar(100),
+name_of_emp varchar(100),
+primary key (ser_id),
+foreign key (name_of_emp)references Employees(FirstName)
+);
+INSERT INTO service values(344,"Food","Monir");
+INSERT INTO service values(323,"Coffee","Zakaria");
+INSERT INTO service values(233,"Clean","Ahmed");
+INSERT INTO service values(133,"clean","Moslim");
+select*from service;
+
+create table vistors(
+FirstName varchar(20),
+LastName  varchar (20),
+v_id int(10) NOT NULL,
+phoneNumber int(10) NOT NULL,
+dep_of_vistors int(50)NOT NULL,
+room_num int(2),
+primary key(v_id),
+foreign key (room_num)references Rooms(room_num)
+);
+
+INSERT INTO vistors values ("Mashael" , "Abdulaziz",1199478372,0584838584,3,8);
+INSERT INTO vistors values("Abdullah","Ahmed",1196568543,0583399876,2,15);
+INSERT INTO vistors values("Omar","Sami",1493855867,0549684939,6,21);
+INSERT INTO vistors values("Abdulaziz", "khalid",1837598882,0559847756,9,28);
+INSERT INTO vistors values("Ethar","Omar", 1109348576,0558777590,3,30);
+INSERT INTO vistors values("Zyad","Ali",1987899993,0566787998,1,5);
+INSERT INTO vistors values("Saja","Abdullah",1193748596,059482235 ,3,11);
+INSERT INTO vistors values("Anfal","Salem",1198038573,0588947389,5,16);
+INSERT INTO vistors values("Fahad","Faiz",1109889873,0578777721,3,18);
+INSERT INTO vistors values("Khalid", "Asad", 1299213473,0575777721,3,20);
+INSERT INTO vistors values("Rana","Bndar",1198034573,0558947389,3,24);
+INSERT INTO vistors values("Fahad","Almetiri",1100889873,0578707721,1,26);
+INSERT INTO vistors values("Khawla", "Omar", 1198213473,0578377721,3,7);
+INSERT INTO vistors values("Batool","Salem",1098038573,0598947389,5,6);
+select *from vistors;
+create table Reversation
+(
+reversation_num int(100) NOT NULL,
+payment_method varchar(100),
+booking_method varchar(100),
+shake_in_date date,
+shake_out_date date,
+primary key (reversation_num)
+);
+insert into Reversation values(1,"cash","actual in hotel","2019-12-28","2020-01-01");
+insert into Reversation values(2,"credit_card","online","2020-01-01","2020-01-05");
+insert into Reversation values(3,"cash","online","2020-02-01","2020-02-05");
+insert into Reversation values(4,"credit_card","actual in hotel ","2020-02-23","2038-02-25");
+insert into Reversation values(5,"cash","actual in hotel","2020-02-25","2020-02-26");
+insert into Reversation values(6,"credit_card","actual in hotel ","2020-03-10","2020-03-15");
+insert into Reversation values(7,"cash","actual in hotel","2020-03-11","2020-03-18");
+insert into Reversation values(8,"credit_card","actual in hotel ","2020-06-16","2020-06-17");
+insert into Reversation values(9,"cash","actual in hotel","2020-08-10","2020-08-13");
+insert into Reversation values(10,"credit_card","actual in hotel ","2020-09-09","2020-09-15");
+insert into Reversation values(11,"credit_card","actual in hotel ","2020-09-10","2020-09-15");
+insert into Reversation values(12,"credit_card","online","2020-10-01","2020-10-08");
+insert into Reversation values(13,"cash","actual in hotel ","2020-10-09","2020-10-15");
+select * from Reversation;
+CREATE TABLE Rooms (
+  room_num INT(1) NOT NULL ,
+  room_status VARCHAR(200) ,
+floor_num int(1),
+bed_tybe varchar(200),
+roomType varchar(200),
+price int(10),
+  primary key(room_num)
+  );
+  
+insert into Rooms Values(1,'availble',1,'Twin','double',500);
+insert into Rooms Values(2,'availble',1,'Twin','double',500);
+insert into Rooms Values(3,'availble',1,'Twin','double',500);
+insert into Rooms Values(4,'anavailble',1,'Twin','double',500);
+insert into Rooms Values(5,'anavailble',1,'Twin','Suite',700);
+insert into Rooms Values(6,'anavailble',1,'Twin','double',500);
+insert into Rooms Values(7,'anavalible',1,'Single','double',400);
+insert into Rooms Values(8,'anavalible',1,'Single','double',400);
+insert into Rooms Values(9,'anavalible',1,'Single','double',400);
+insert into Rooms Values(10,'avalible',1,'Single','double',400);
+insert into Rooms Values(11,'anavalible',2,'double','single',430);
+insert into Rooms Values(12,'anavalible',2,'double','double',610);
+insert into Rooms Values(13,'anavalible',2,'double','single',430);
+insert into Rooms Values(14,'anavalible',2,'double','single',430);
+insert into Rooms Values(15,'anavalible',2,'double','double',610);
+insert into Rooms Values(16,'anavalible',2,'double','single',430);
+insert into Rooms Values(17,'anavalible',2,'double','Suite',710);
+insert into Rooms Values(18,'anavalible',2,'double','Suite',710);
+insert into Rooms Values(19,'avalible',2,'double','Suite',710);
+insert into Rooms Values(20,'anavalible',2,'double','Suite',710);
+insert into Rooms Values(21,'anavalible',3,'Twin','Suite',700);
+insert into Rooms Values(22,'avalible',3,'Twin','Suite',700);
+insert into Rooms Values(23,'anavalible',3,'Single','Suite',550);
+insert into Rooms Values(24,'anavalible',3,'Single','Suite',550);
+insert into Rooms Values(25,'avalible',3,'Single','Suite',550);
+insert into Rooms Values(26,'anavalible',3,'Single','Suite',550);
+insert into Rooms Values(27,'avalible',3,'Twin','Suite',700);
+insert into Rooms Values(28,'anavalible',3,'Twin','Suite',700);
+insert into Rooms Values(29,'avalible',3,'Twin','Suite',700);
+insert into Rooms Values(30,'anavalible',3,'Twin','Suite',700);
+select * from Rooms;
+select * from Rooms where bed_tybe ='Twin' and room_status='avalible';
+SELECT* FROM Rooms order by price DESC;
+select * from Rooms where price = 400 and room_status='avalible';
+SELECT * FROM Rooms WHERE price = (SELECT min(price) FROM Rooms);
+SELECT * FROM Rooms WHERE price = (SELECT max(price) FROM Rooms);
+SELECT * FROM Employees WHERE Salary = (SELECT MAX( salary) FROM Employees);
+SELECT AVG(salary) from Employees;
+select  Jop_Titel from Employees;
+select Jop_Titel,sum(salary) from Employees group by Jop_Titel;
+SELECT *FROM Employees WHERE salary <=9900;
+update Employees set salary = 4500 where FirstName = "Yara";
+select * from Employees;
+select FirstName from vistors ;
+select * from vistors order by FirstName;
+select *from vistors where dep_of_vistors='1';
+select *from vistors where v_id =1199478372;
+select *from vistors where dep_of_vistors !=1;
+select FirstName from vistors where dep_of_vistors=3 ;
+select  v_id from vistors where dep_of_vistors between 3 and 5 ;
+select count('Number of Debndent') from vistors where dep_of_vistors=1;
+select ser_type from service where name_of_emp in (select FirstName from Employees where salary>=1200);
+select*from Employees;
+select * from Reversation where payment_method ="credit_card";
+select * from Reversation where payment_method ="cash";
+select * from Reversation where booking_method ="online";
+select * from Reversation where booking_method ="actual in hotel";
+select * from Reversation where shake_in_date ="2020-01-01";
+select * from Reversation where shake_out_date >"2020-01-01";
+select * from Reversation order by payment_method;
+select * from Reversation order by payment_method,booking_method;
+select * from Reversation order by payment_method,booking_method ASC;
+select * from Reversation order by payment_method,booking_method DESC;
+select * from Reversation order by shake_out_date DESC;
+select * from Reversation order by booking_method DESC;
+select count(reversation_num),booking_method from Reversation group by booking_method;
+select count('booking method is online = ') from Reversation where booking_method='online';
+select count(reversation_num),payment_method from Reversation group by payment_method order by count(reversation_num);
+select count(payment_method) from Reversation ;
